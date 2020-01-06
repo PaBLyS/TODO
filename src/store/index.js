@@ -35,6 +35,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    addList(state, elem) {
+      state.list.push(elem)
+    },
   },
   actions: {
   },

@@ -12,8 +12,8 @@
     <b-row class="justify-content-center" v-if="statusAdd">
       <b-col cols="3">
         <b-button-group>
-          <input type="text">
-          <b-button variant="success">Добавить</b-button>
+          <input type="text" v-model="newList.label">
+          <b-button variant="success" @click="createList()">Добавить</b-button>
         </b-button-group>
       </b-col>
     </b-row>
@@ -36,12 +36,20 @@ export default {
   data() {
     return {
       search: '',
-      statusAdd: false
+      statusAdd: false,
+      newList: {
+        label: ''
+      }
     }
   },
   computed: {
     list() {
       return this.$store.getters.allList
+    }
+  },
+  methods: {
+    createList() {
+      this.$store.commit('addList', {...this.newList})
     }
   }
 }
