@@ -38,6 +38,12 @@ export default new Vuex.Store({
     addList(state, elem) {
       state.list.push(elem)
     },
+    removeList(state, id) {
+      state.list.splice(id, 1);
+    },
+    editList(state, id, obj) {
+      state.list[id] = obj;
+    }
   },
   actions: {
   },

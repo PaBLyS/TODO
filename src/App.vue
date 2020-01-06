@@ -21,7 +21,8 @@
       <b-col cols="12">
         <custom-list v-for="(elem, index) in list"
                       :key="index"
-                      :label="elem.label"/>
+                      :label="elem.label"
+                      :id="index"/>
       </b-col>
     </b-row>
   </b-container>
