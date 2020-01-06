@@ -15,7 +15,7 @@
     name: 'customList',
     props: {
       label: String,
-      id: Number
+      index: Number
     },
     data() {
       return {
@@ -25,13 +25,11 @@
     },
     methods: {
       save() {
+        this.$store.commit('editList', {id: this.index, label: this.newLabel})
         this.status = true
       },
       deleteList() {
-        this.$store.commit('removeList', this.id)
-      },
-      edit() {
-        this.$store.commit('editList', this.id, {label: this.newLabel})
+        this.$store.commit('clearAll', this.index)
       }
     }
   }

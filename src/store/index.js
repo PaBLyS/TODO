@@ -7,25 +7,32 @@ export default new Vuex.Store({
   state: {
     list: [
       {
-        label: 'Лист 1'
+        id: 0,
+        label: '368567857684126мропмпромо'
       },
       {
-        label: 'Лист 2'
+        id: 1,
+        label: '4567567576567ропмпромроп'
       },
       {
-        label: 'Лист 3'
+        id: 2,
+        label: '45674565758676мропмпромр'
       },
       {
-        label: 'Лист 4'
+        id: 3,
+        label: '546755768549765аропмпромро'
       },
       {
-        label: 'Лист 21'
+        id: 4,
+        label: '56756766789677мпромрпо'
       },
       {
-        label: 'Лист 32'
+        id: 5,
+        label: '7856757878мрпомрпом'
       },
       {
-        label: 'Лист 10'
+        id: 6,
+        label: '756769508760мромрпом'
       },
     ]
   },
@@ -35,14 +42,20 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    addList(state, elem) {
-      state.list.push(elem)
+    addList(state, item) {
+      state.list.forEach((elem) => {
+        if (elem.id > item.id) item.id = elem.id + 1
+      })
+      state.list.push(item)
     },
     removeList(state, id) {
       state.list.splice(id, 1);
     },
-    editList(state, id, obj) {
-      state.list[id] = obj;
+    editList(state, obj) {
+      state.list[obj.id] = obj
+    },
+    clearAll(state) {
+      state.list = []
     }
   },
   actions: {
