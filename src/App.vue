@@ -1,12 +1,20 @@
 <template>
-  <b-container fluid id="app">
+  <b-container fluid id="app" class="app">
     <b-row class="justify-content-between">
       <b-col cols="4">
-        <b-button variant="success">Создать новый лист</b-button>
-        <b-button variant="danger">Удалить Все</b-button>
+        <b-button variant="success" class="app__button" @click="statusAdd = !statusAdd">Создать новый лист</b-button>
+        <b-button variant="danger" class="app__button">Удалить Все</b-button>
       </b-col>
       <b-col cols="2">
         <b-form-input v-model="search" placeholder="Search"></b-form-input>
+      </b-col>
+    </b-row>
+    <b-row class="justify-content-center" v-if="statusAdd">
+      <b-col cols="3">
+        <b-button-group>
+          <input type="text">
+          <b-button variant="success">Добавить</b-button>
+        </b-button-group>
       </b-col>
     </b-row>
     <b-row>
@@ -27,17 +35,24 @@ export default {
   components: {customList},
   data() {
     return {
-      search: ''
+      search: '',
+      statusAdd: false
     }
   },
   computed: {
-      list() {
-        return this.$store.getters.allList
-      }
+    list() {
+      return this.$store.getters.allList
+    }
   }
 }
 </script>
 
 <style lang="scss">
+  .app {
+    margin: 20px 0;
 
+    &__button {
+      margin-right: 10px;
+    }
+  }
 </style>
