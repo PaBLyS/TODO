@@ -29,7 +29,7 @@
         this.status = true
       },
       deleteList() {
-        this.$store.commit('clearAll', this.index)
+        this.$store.commit('removeList', this.index)
       }
     }
   }
